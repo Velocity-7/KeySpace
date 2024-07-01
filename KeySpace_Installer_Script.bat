@@ -4,10 +4,10 @@ color 81
 set load=
 set/a loadnum=0
 :Loading
-set load=%load%ÛÛ
+set load=%load%ï¿½ï¿½
 cls
 echo.
-echo Connecting to Server...
+echo Loading Data...
 echo -----------------------------------------
 echo %load%                    
 echo -----------------------------------------
