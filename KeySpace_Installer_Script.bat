@@ -1,10 +1,10 @@
 @echo off
-title Connecting to Blunt Mark Server's...
+title Installing KeySpace...
 color 81
 set load=
 set/a loadnum=0
 :Loading
-set load=%load%��
+set load=%load%ÛÛ
 cls
 echo.
 echo Loading Data...
@@ -21,7 +21,6 @@ goto Loading
 :Done
 echo.
 pause
-title {Connection Established}
 cls
 tree
 pip install customtkinter
