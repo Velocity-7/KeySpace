@@ -1,5 +1,4 @@
 import customtkinter as ck
-# import tkinter
 import sqlite3
 
 window = ck.CTk()
@@ -9,7 +8,7 @@ window.title('KeySpace')
 
 Line_1 = ck.CTkLabel(window, text='Welcome to KeySpace', text_color='blue', font=('Arial', 18))
 Line_1.grid(column=2)
-Line_2 = ck.CTkLabel(window, text='Version V1.0', font=('Arial', 12))
+Line_2 = ck.CTkLabel(window, text='Version V1.5', font=('Arial', 12))
 Line_2.grid(row=15)
 Line_3 = ck.CTkLabel(window, text='', font=('Arial', 15))
 Line_3.grid(row=7, column=2) 
@@ -48,14 +47,12 @@ Delete_Entry.grid(row=5, column=1)
 def Save():
  database_connector = sqlite3.connect('Vault\Passwords.db')
  database_cursor = database_connector.cursor()
-
  database_cursor.execute('INSERT INTO passwords VALUES (:App_Entry, :Pass_Entry)',
  {
     'App_Entry': App_Entry.get(),
     'Pass_Entry': Pass_Entry.get()
  }
  )
-
  database_connector.commit()
  database_connector.close()
  App_Entry.delete(0, 'end')
@@ -64,9 +61,9 @@ def Save():
 def Show():
  database_connector = sqlite3.connect('Vault\Passwords.db')
  database_cursor = database_connector.cursor()
- 
  database_cursor.execute('SELECT *, oid FROM passwords')
  records = database_cursor.fetchall()
+ 
  print_records = ''
 
  for record in records:
