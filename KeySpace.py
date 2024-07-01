@@ -4,7 +4,7 @@ import sqlite3
 
 window = ck.CTk()
 window.geometry('870x504')
-window.iconbitmap('Vault/logo.ico')
+window.iconbitmap('Vault/Logo.ico')
 window.title('KeySpace')
 
 Line_1 = ck.CTkLabel(window, text='Welcome to KeySpace', text_color='blue', font=('Arial', 18))
