@@ -4,7 +4,7 @@ color 81
 set load=
 set/a loadnum=0
 :Loading
-set load=%load%ŰŰ
+set load=%load%ÛÛ
 cls
 echo.
 echo Loading Data...
