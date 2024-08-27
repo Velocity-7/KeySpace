@@ -4,7 +4,7 @@ color 81
 set load=
 set/a loadnum=0
 :Loading
-set load=%load%ÛÛ
+set load=%load%ï¿½ï¿½
 cls
 echo.
 echo Loading Data...
@@ -24,5 +24,5 @@ pause
 cls
 tree
 pip install customtkinter
-move "%UserProfile%\Downloads\KeySpace Package V1.5\KeySpace" "%AppData%\KeySpace"
+move "%UserProfile%\Downloads\KeySpace Package V1.8\KeySpace" "%AppData%\KeySpace"
 move "%AppData%\KeySpace\ShortCut\*.*" "%UserProfile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
