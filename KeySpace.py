@@ -2,16 +2,14 @@ import customtkinter as ck
 import sqlite3
 
 window = ck.CTk()
-window.geometry('870x504')
+window.geometry('870x508')
 window.iconbitmap('Vault/Logo.ico')
 window.title('KeySpace')
 
 Line_1 = ck.CTkLabel(window, text='Welcome to KeySpace', text_color='blue', font=('Arial', 18))
 Line_1.grid(column=2)
-Line_2 = ck.CTkLabel(window, text='Version V1.5', font=('Arial', 12))
-Line_2.grid(row=15)
-Line_3 = ck.CTkLabel(window, text='', font=('Arial', 15))
-Line_3.grid(row=7, column=2) 
+Line_2 = ck.CTkLabel(window, text='', font=('Arial', 15))
+Line_2.grid(row=7, column=2) 
 Fake_Line_1 = ck.CTkLabel(window, text='')
 Fake_Line_1.grid(row=2)
 Fake_Line_2 = ck.CTkLabel(window, text='')
@@ -39,7 +37,7 @@ Fake_Line_12.grid(row=14)
 
 App_Entry = ck.CTkEntry(window, placeholder_text='Enter Application Name')
 App_Entry.grid(row=1, column=1)
-Pass_Entry = ck.CTkEntry(window, placeholder_text='Enter Your Password')
+Pass_Entry = ck.CTkEntry(window, placeholder_text='Enter Your Password', show='*')
 Pass_Entry.grid(row=1, column=2)
 Delete_Entry = ck.CTkEntry(window, placeholder_text='Enter ID to Delete')
 Delete_Entry.grid(row=5, column=1)
@@ -67,15 +65,30 @@ def Show():
  print_records = ''
 
  for record in records:
-    print_records += str(record[0]) + ':' + str(record[1]) + ':' + str(record[2]) + '\n'
+    print_records += 'Username:' + str(record[0]) + ' - ' + 'Password:' + str(record[1]) + ' - ' + 'ID :' + ' ' + str(record[2]) + '\n'
 
- Line_3.configure(text=print_records)
+ Line_2.configure(text=print_records)
 
  database_connector.commit()
  database_connector.close()
 
 def Clear():
- Line_3.configure(text='')   
+ Line_2.configure(text='')   
+
+def About():
+ window_about = ck.CTk()
+ window_about.geometry('300x100')
+ window_about.iconbitmap('Vault/Logo.ico')
+ window_about.title('About KeySpace')
+
+ Fake_Line_1 = ck.CTkLabel(window_about, text=' ')
+ Fake_Line_1.grid(column=1, row=0)
+ Line_1 = ck.CTkLabel(window_about, text='Version V1.8', font=('Arial', 21))
+ Line_1.grid(column=2, row=1)
+ Line_2 = ck.CTkLabel(window_about, text='Github - Velocity07', font=('Arial', 18))
+ Line_2.grid(column=2, row=2)
+
+ window_about.mainloop()
   
 def Delete():
  database_connector = sqlite3.connect('Vault\Passwords.db')
@@ -96,6 +109,8 @@ Button_Delete = ck.CTkButton(window, text='Delete', command=Delete, fg_color='gr
 Button_Delete.grid(row=5, column=2)
 Button_Quit = ck.CTkButton(window, text='Quit', fg_color='red', hover_color='grey', command=window.quit)
 Button_Quit.grid(column=0, row=16) 
+Button_About = ck.CTkButton(window, text='About', hover_color='grey', command=About)
+Button_About.grid(column=0, row=17)
 
 database_connector = sqlite3.connect('Vault\Passwords.db')
 database_cursor = database_connector.cursor()
