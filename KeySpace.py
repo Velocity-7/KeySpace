@@ -42,6 +42,44 @@ Pass_Entry.grid(column=2, row=1)
 Delete_Entry = ck.CTkEntry(window, placeholder_text='Enter ID to Delete')
 Delete_Entry.grid(column=1, row=5)
 
+def About():
+ window_about = ck.CTk()
+ window_about.geometry('300x200')
+ window_about.iconbitmap('Vault/Logo.ico')
+ window_about.title('About KeySpace')
+
+#  Fake_Line_1 = ck.CTkLabel(window_about, text=' ')
+#  Fake_Line_1.grid(column=1, row=0)
+ Line_1 = ck.CTkLabel(window_about, text='Version V1.8', font=('Arial', 21))
+ Line_1.grid(column=2)
+ Line_2 = ck.CTkLabel(window_about, text='Github - Velocity-7', font=('Arial', 18))
+ Line_2.grid(column=2)
+
+ Button_Import = ck.CTkButton(window_about, text='Import', fg_color='grey', hover_color='green', command=Import)
+ Button_Import.grid(column=2)
+ Button_Export = ck.CTkButton(window_about, text='Export', command=Export)
+ Button_Export.grid(column=2)
+
+ window_about.mainloop()
+
+def Clear():
+ Line_2.configure(text='')    
+
+def Delete():
+ database_connector = sqlite3.connect('Vault\Passwords.db')
+ database_cursor = database_connector.cursor()
+
+ database_cursor.execute('DELETE from passwords WHERE oid= ' + Delete_Entry.get())
+
+ database_connector.commit()
+ database_connector.close() 
+
+def Export():
+   None 
+
+def Import():
+   None     
+
 def Save():
  database_connector = sqlite3.connect('Vault\Passwords.db')
  database_cursor = database_connector.cursor()
@@ -70,34 +108,7 @@ def Show():
  Line_2.configure(text=print_records)
 
  database_connector.commit()
- database_connector.close()
-
-def Clear():
- Line_2.configure(text='')   
-
-def About():
- window_about = ck.CTk()
- window_about.geometry('300x100')
- window_about.iconbitmap('Vault/Logo.ico')
- window_about.title('About KeySpace')
-
- Fake_Line_1 = ck.CTkLabel(window_about, text=' ')
- Fake_Line_1.grid(column=1, row=0)
- Line_1 = ck.CTkLabel(window_about, text='Version V1.8', font=('Arial', 21))
- Line_1.grid(column=2, row=1)
- Line_2 = ck.CTkLabel(window_about, text='Github - Velocity07', font=('Arial', 18))
- Line_2.grid(column=2, row=2)
-
- window_about.mainloop()
-  
-def Delete():
- database_connector = sqlite3.connect('Vault\Passwords.db')
- database_cursor = database_connector.cursor()
-
- database_cursor.execute('DELETE from passwords WHERE oid= ' + Delete_Entry.get())
-
- database_connector.commit()
- database_connector.close() 
+ database_connector.close()  
 
 Button_Save = ck.CTkButton(window, text='Save', hover_color='green', command=Save)
 Button_Save.grid(column=4, row=1)
