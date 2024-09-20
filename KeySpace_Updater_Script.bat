@@ -4,7 +4,7 @@ color 81
 set load=
 set/a loadnum=0
 :Loading
-set load=%load%ÛÛ
+set load=%load%ï¿½ï¿½
 cls
 echo.
 echo Loading Data...
@@ -27,6 +27,7 @@ pip install customtkinter
 attrib "%AppData%\KeySpace\KeySpace.py" -h
 attrib "%AppData%\KeySpace\KeySpace.py" -r
 del /q /s %AppData%\KeySpace\KeySpace.py
+rename "%UserProfile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\KeySpace V1.8.lnk" "KeySpace V2.0.lnk"
 rename "%UserProfile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\KeySpace V1.5.lnk" "KeySpace V1.8.lnk"
 rename "%UserProfile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\KeySpace V1.0.lnk" "KeySpace V1.8.lnk"
 attrib "%UserProfile%\Downloads\KeySpace_Package_V1.8\KeySpace\KeySpace.py" -h
