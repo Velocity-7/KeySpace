@@ -6,7 +6,7 @@ window.geometry('870x508')
 window.iconbitmap('Vault/Logo.ico')
 window.title('KeySpace')
 
-Line_1 = ck.CTkLabel(window, text='Welcome to KeySpace', text_color='blue', font=('Arial', 18))
+Line_1 = ck.CTkLabel(window, text='Welcome to KeySpace', text_color='lightblue', font=('Arial', 18))
 Line_1.grid(column=2)
 Line_2 = ck.CTkLabel(window, text='', font=('Arial', 15))
 Line_2.grid(column=2, row=7) 
@@ -44,21 +44,29 @@ Delete_Entry.grid(column=1, row=5)
 
 def About():
  window_about = ck.CTk()
- window_about.geometry('300x200')
+ window_about.geometry('310x120')
  window_about.iconbitmap('Vault/Logo.ico')
  window_about.title('About KeySpace')
 
-#  Fake_Line_1 = ck.CTkLabel(window_about, text=' ')
-#  Fake_Line_1.grid(column=1, row=0)
- Line_1 = ck.CTkLabel(window_about, text='Version V1.8', font=('Arial', 21))
- Line_1.grid(column=2)
+ Fake_Line_1 = ck.CTkLabel(window_about, text='  ')
+ Fake_Line_1.grid(column=0, row=1)
+ Fake_Line_2 = ck.CTkLabel(window_about, text='  ')
+ Fake_Line_2.grid(column=0, row=2)
+ Fake_Line_3 = ck.CTkLabel(window_about, text=' ')
+ Fake_Line_3.grid(column=1, row=0)
+ Fake_Line_4 = ck.CTkLabel(window_about, text='  ')
+ Fake_Line_4.grid(column=2, row=1)
+ Fake_Line_5 = ck.CTkLabel(window_about, text='  ')
+ Fake_Line_5.grid(column=2, row=2)
+ Line_1 = ck.CTkLabel(window_about, text='Version V1.9', font=('Arial', 21))
+ Line_1.grid(column=1, row=1)
  Line_2 = ck.CTkLabel(window_about, text='Github - Velocity-7', font=('Arial', 18))
- Line_2.grid(column=2)
+ Line_2.grid(column=1, row=2)
 
- Button_Import = ck.CTkButton(window_about, text='Import', fg_color='grey', hover_color='green', command=Import)
- Button_Import.grid(column=2)
- Button_Export = ck.CTkButton(window_about, text='Export', command=Export)
- Button_Export.grid(column=2)
+ Button_Import = ck.CTkButton(window_about, text='Import (Disabled)', fg_color='grey', state='disabled', command=Import)
+ Button_Import.grid(column=3, row=1)
+ Button_Export = ck.CTkButton(window_about, text='Export (Disabled)', fg_color='grey', hover_color='red', state='disabled', command=Export)
+ Button_Export.grid(column=3, row=2, pady=3)
 
  window_about.mainloop()
 
@@ -75,10 +83,10 @@ def Delete():
  database_connector.close() 
 
 def Export():
-   None 
+ None 
 
 def Import():
-   None     
+ None     
 
 def Save():
  database_connector = sqlite3.connect('Vault\Passwords.db')
@@ -103,7 +111,7 @@ def Show():
  print_records = ''
 
  for record in records:
-    print_records += 'Username:' + str(record[0]) + ' - ' + 'Password:' + str(record[1]) + ' - ' + 'ID :' + ' ' + str(record[2]) + '\n'
+    print_records += 'Username: ' + str(record[0]) + ' | ' + 'Password: ' + str(record[1]) + ' | ' + 'ID :' + ' ' + str(record[2]) + '\n'
 
  Line_2.configure(text=print_records)
 
@@ -116,12 +124,12 @@ Button_Show = ck.CTkButton(window, text='Show', command=Show)
 Button_Show.grid(column=1, row=3)
 Button_Clear = ck.CTkButton(window, text='Clear', command=Clear)
 Button_Clear.grid(column=2, row=3) 
-Button_Delete = ck.CTkButton(window, text='Delete', command=Delete, fg_color='grey', hover_color='red')
+Button_Delete = ck.CTkButton(window, text='Delete', fg_color='grey', hover_color='red', command=Delete)
 Button_Delete.grid(column=2, row=5)
 Button_Quit = ck.CTkButton(window, text='Quit', fg_color='red', hover_color='grey', command=window.quit)
 Button_Quit.grid(row=16) 
 Button_About = ck.CTkButton(window, text='About', hover_color='grey', command=About)
-Button_About.grid(row=17)
+Button_About.grid(row=17, pady=3)
 
 database_connector = sqlite3.connect('Vault\Passwords.db')
 database_cursor = database_connector.cursor()
